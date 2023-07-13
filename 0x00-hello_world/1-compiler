@@ -1,5 +1,2 @@
 #!/bin/bash
-CFILE=$1
-BASENAME=$(basename "$CFILE" .c)
-gcc -c "$CFILE" -o "$BASENAME.o"
-./compile_c_file.sh main.c
+gcc -c $CFILE -o 'echo $CFILE | cut -d. -f1' .o
