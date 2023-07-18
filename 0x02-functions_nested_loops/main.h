@@ -1,3 +1,11 @@
-1 int _putchar(char c);
-2 void print_alphabet(void);
-3 int _islower(int c);
+#ifndef MAIN_H
+#define MAIN_H
+
+#include <stdio.h>
+
+int _putchar(char c);
+
+
+
+
+#endif
