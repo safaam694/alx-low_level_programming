@@ -2,17 +2,20 @@
 
 /**
  * main - Entry point
- * Description: prints _putchar using putch prototype
- *
- *Return: Always 0 (success)
-*/
+ * Retuen: Always
+ */
+
 int main(void)
 {
-	char str[] = "_putchar";
-	int ch;
 
-	for (ch = 0; ch < 8; ch++)
-	        _putchar(str[str]);
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
 	_putchar('\n');
-        return (0);
+	return (0);
 }
