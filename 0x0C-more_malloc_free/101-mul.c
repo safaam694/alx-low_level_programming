@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void _puts(char *str);
+void _puts(char *str)
 {
 	int i = 0;
 
@@ -23,14 +23,14 @@ void _puts(char *str);
  * Return: integer converted
  */
 
-int _atoi(const char *s);
+int _atoi(const char *s)
 {
 	int sign = 1;
 	unsigned long int resp = 0, firstNum, i;
 
 	for (firstNum = 0; !(s[firstNum] >= 48 && s[firstNum] <= 57); firstNum++)
 	{
-		if (s[fistNum] == '-')
+		if (s[firstNum] == '-')
 		{
 			sign *= -1;
 		}
@@ -48,7 +48,7 @@ int _atoi(const char *s);
  * @n: int
  * Return: 0
  */
-void print_int(unsigned long int n);
+void print_int(unsigned long int n)
 {
 	unsigned long int divisor = 1, i, resp;
 
@@ -66,7 +66,7 @@ void print_int(unsigned long int n);
  * @argv: list
  * Return: 0
  */
-int main(int argc, char const *argv[]);
+int main(int argc, char const *argv[])
 {
 	(void)argc;
 	if (argc != 3)
