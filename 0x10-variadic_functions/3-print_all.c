@@ -1,80 +1,43 @@
+#include <stdio.h>
+#include <stdarg.h>
 #include "variadic_functions.h"
 
-/**
- * mt_char - formats character
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_char(char *separator, va_list ap)
-{
-	printf("%s%c", separatoe, va_arg(ap, int));
-}
-
-/**
- * fprmat_int - formats integer
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_int(char *separator, va_list ap)
-{
-	printf("%s%d", separator, va_arg(ap, int));
-}
-
-/**
- * format_float - formats float
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_float(char *separator, va_list ap)
-{
-	printf("%s%f", separator, va_arg(ap, double));
-}
-
-/**
- * format_string - formats string
- * @separator: the string separator
- * @ap: argument pointer
- */
-void format_string(char *separator, va_list ap)
-{
-	char *str = va_arg(ap, char *);
-		switch ((int)(!str))
-	case 1:
-		str = "(nil)";
-		printf("%s%s", separator, str);
-}
-
-/**
- * print_all - prints anything
- * @format: the format string
- */
 void print_all(const char * const format, ...)
 {
-	int i = 0, j;
-	char *separator = "";
-	va_list ap;
-	token_t token[] = {
-		{"c", format_char},
-		{"i", format_int},
-		{"f", format_float},
-		{"s", format_string},
-		{NULL, NULL}
-	};
-	va_start(ap, format);
+	va_list args;
+	int i = 0;
+	char *str;
+	char c;
+
+	va_start(args, format);
 	while (format && format[i])
 	{
-		j = 0;
-		while (tokens[j].token)
+		switch (format[i])
 		{
-			if (format[i] == tokens[j].token[0])
-			{
-				token[j].f(separator, ap);
-				separator = ", ";
-			}
-			j++;
+			case 'c':
+				c = va_arg(args, int);
+				printf("%c", c);
+				break;
+			case 'i':
+				printf("%d", va_arg(args, int));
+				break;
+			case 'f':
+				printf("%f", va_arg(args, double));
+				break;
+			case 's':
+				str = va_arg(args, char *);
+				if (str == NULL)
+					str = "(nil)";
+				printf("%s", str);
+				break;
+			default:
+				i++;
+				continue;
 		}
+		if (format[i + 1] != '\0')
+			printf(", ");
 		i++;
 	}
+	va_end(args);
 	printf("\n");
-	va_end(ap);
 }
